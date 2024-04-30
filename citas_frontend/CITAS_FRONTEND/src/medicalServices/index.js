@@ -1,0 +1,5 @@
+export { Nutrition } from "./Nutrition"
+export { Pediatrics } from "./Pediatrics"
+export { Psychology } from "./Psychology"
+export  { MedicalExams } from "./MedicalExams"
+export { Dermatologist } from "./Dermatologist"
