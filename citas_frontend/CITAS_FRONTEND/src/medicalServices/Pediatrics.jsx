@@ -6,12 +6,12 @@ import { NavigationBar } from '../components';
 export const Pediatrics = () => {
     const [doctorInfo, setDoctorInfo] = useState([]);
     const { API_URL } = constants();
-    const dermatologySpecialtyId = '08dc63c5-e5f9-4c92-840c-4f3369b4b94c';
+    const especialidadId = '08dc63c5-e5f9-4c92-840c-4f3369b4b94c';
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseDoctors = await fetch(`${API_URL}/doctores/especialidad/${dermatologySpecialtyId}`);
+                const responseDoctors = await fetch(`${API_URL}/doctores/especialidad/${especialidadId}`);
                 const responseTurnos = await fetch(`${API_URL}/doctores/turnos`);
 
                 if (!responseDoctors.ok || !responseTurnos.ok) {
@@ -38,7 +38,7 @@ export const Pediatrics = () => {
         };
 
         fetchData();
-    }, [API_URL, dermatologySpecialtyId]); 
+    }, [API_URL, especialidadId]); 
 
     const formatDateForURL = (dateString) => {
         if (!dateString) {

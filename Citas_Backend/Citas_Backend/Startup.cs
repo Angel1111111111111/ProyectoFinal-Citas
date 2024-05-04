@@ -39,6 +39,16 @@ namespace Citas_Backend
                 options.UseMySql(connString, ServerVersion.AutoDetect(connString),
                     mySqlOptions => mySqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore)));
 
+            
+            var logsConnString = Configuration.GetConnectionString("LogsConnection");
+
+            services.AddDbContext<LogDbContext>(options =>
+                options.UseMySql(logsConnString, ServerVersion.AutoDetect(logsConnString),
+                    mySqlOptions => mySqlOptions.SchemaBehavior(MySqlSchemaBehavior.Ignore)));
+
+
+
+
             // Add custom services
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<ICitasService, CitasService>();
@@ -48,6 +58,12 @@ namespace Citas_Backend
             services.AddTransient<ITurnoService, TurnoService>();
             services.AddTransient<IPacienteService, PacienteService>();
             services.AddTransient<IAutenticacionService, AutenticacionService>();
+
+            //services.AddTransient<ILogsService, LogsService>();
+            services.AddScoped<ILogsService, LogsService>();
+            services.AddScoped<LogsService>();
+
+
 
             // Add AutoMapper service
             services.AddAutoMapper(typeof(Startup));

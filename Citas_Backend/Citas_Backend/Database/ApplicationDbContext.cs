@@ -8,7 +8,7 @@ namespace Citas_Backend.Database
 {
     public class ApplicationDbContext : IdentityDbContext<UserEntity>
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
 
@@ -28,7 +28,7 @@ namespace Citas_Backend.Database
 
         public DbSet<CitasEntity> Citas { get; set; }
         public DbSet<ConsultaEntity> Consultas { get; set; }
-        public DbSet<EspecialidadEntity> Especialidades { get; set;}
+        public DbSet<EspecialidadEntity> Especialidades { get; set; }
         public DbSet<TurnoEntity> Turnos { get; set; }
         public DbSet<DoctorEntity> Doctor { get; set; }
         public DbSet<PacienteEntity> Pacientes { get; set; }

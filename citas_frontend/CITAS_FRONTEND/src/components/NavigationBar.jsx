@@ -70,6 +70,7 @@ export const NavigationBar = () => {
           Agenda cita
         </Link>
 
+
         <Link
           to="/historialCita"
           className="inline-block tracking-tight text-xl px-4 py-2 leading-none rounded hover:text-gray-200 text-black mt-4 lg:mt-0 mr-4 font-semibold"
@@ -82,6 +83,12 @@ export const NavigationBar = () => {
           className="inline-block tracking-tight text-xl px-4 py-2 leading-none rounded hover:text-gray-200 text-black mt-4 lg:mt-0 mr-4 font-semibold"
         >
           Historial médico
+        </Link>
+        <Link
+          to="/eventos"
+          className="inline-block tracking-tight text-xl px-4 py-2 leading-none rounded hover:text-gray-200 text-black mt-4 lg:mt-0 mr-4 font-semibold"
+        >
+          Registros
         </Link>
         {isLoggedIn && (
           <Link

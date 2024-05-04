@@ -13,16 +13,24 @@ namespace Citas_Backend.Controllers
     public class PacienteController : ControllerBase
     {
         private readonly IPacienteService _pacienteService;
+        private readonly ILogsService _logsService;
 
-        public PacienteController(IPacienteService pacienteService)
+        public PacienteController(IPacienteService pacienteService, ILogsService logsService)
         {
             _pacienteService = pacienteService;
+            _logsService = logsService;
         }
 
         [HttpPost("register")]
         public async Task<ActionResult<ResponseDto<PacienteDto>>> Register(PacienteCreateDto pacienteDto)
         {
             var response = await _pacienteService.RegistrarPacienteAsync(pacienteDto);
+
+            if (response.Status)
+            {
+                await _logsService.LogCreateAsync("", "Paciente registrado");
+            }
+
             return StatusCode(response.StatusCode, response);
         }
 

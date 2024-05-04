@@ -2,7 +2,14 @@ import { Route, Routes } from "react-router-dom"
 import { LoginPage, Register } from "../pages"
 import { PublicRoute } from "./PublicRoute"
 import { PrivateRoute } from "./PrivateRoute"
-import { Consultation, HistorialCitas, HistorialMedico, Services, TodoFormCita } from "../components"
+import {
+    Consultation,
+    EventSaves,
+    HistorialCitas,
+    HistorialMedico,
+    Services,
+    TodoFormCita
+} from "../components"
 import { Dermatologist } from "../medicalServices/Dermatologist"
 import { MedicalExams } from "../medicalServices"
 import { Nutrition } from "../medicalServices/Nutrition"
@@ -41,9 +48,9 @@ export const AppRouter = () => {
                 <Route
                     path='/register'
                     element={
-                        <PrivateRoute>
+                        <PublicRoute>
                             <Register />
-                        </PrivateRoute>
+                        </PublicRoute>
                     }
                 />
                 <Route
@@ -115,6 +122,15 @@ export const AppRouter = () => {
                     element={
                         <PrivateRoute>
                             <HistorialMedico />
+                        </PrivateRoute>
+                    }
+                />
+
+                <Route
+                    path='/eventos'
+                    element={
+                        <PrivateRoute>
+                            <EventSaves />
                         </PrivateRoute>
                     }
                 />

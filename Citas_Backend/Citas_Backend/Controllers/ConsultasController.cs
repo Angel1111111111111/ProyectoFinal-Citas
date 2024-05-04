@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Citas_Backend.Services.Interfaces;
 using Citas_Backend.Dtos.Consultas;
+using Citas_Backend.Services;
 
 namespace Citas_Backend.Controllers
 {
@@ -12,10 +13,12 @@ namespace Citas_Backend.Controllers
     public class ConsultaController : ControllerBase
     {
         private readonly IConsultasService _consultaService;
+        private readonly ILogsService _logsService;
 
-        public ConsultaController(IConsultasService consultaService)
+        public ConsultaController(IConsultasService consultaService, ILogsService logsService)
         {
             _consultaService = consultaService;
+            _logsService = logsService;
         }
 
         // GET: api/consulta
@@ -41,7 +44,12 @@ namespace Citas_Backend.Controllers
         public async Task<ActionResult<ConsultaDto>> PostConsulta([FromBody] ConsultaCreateDto model)
         {
             var response = await _consultaService.CreateConsultaAsync(model);
-            
+
+            if (response.Status)
+            {
+                await _logsService.LogCreateAsync("", "Consulta creada");
+            }
+
             return StatusCode(response.StatusCode, response);
         }
     }

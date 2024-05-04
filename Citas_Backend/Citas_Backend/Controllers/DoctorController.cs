@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Citas_Backend.Dtos.Doctores;
 using Citas_Backend.Dtos.Turnos;
+using Citas_Backend.Services;
 using Citas_Backend.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,10 +14,12 @@ namespace Citas_Backend.Controllers
     public class DoctorController : ControllerBase
     {
         private readonly IDoctorService _doctorService;
+        private readonly ILogsService _logsService;
 
-        public DoctorController(IDoctorService doctorService)
+        public DoctorController(IDoctorService doctorService, ILogsService logsService)
         {
             _doctorService = doctorService;
+            _logsService = logsService;
         }
 
         // GET: api/doctores
@@ -56,6 +59,12 @@ namespace Citas_Backend.Controllers
             {
                 return BadRequest(response.Message);
             }
+
+            if (response.Status)
+            {
+                await _logsService.LogCreateAsync("", "Doctor creado");
+            }
+
             return CreatedAtAction(nameof(GetDoctor), new { id = response.Data }, response.Data);
         }
 
@@ -79,6 +88,11 @@ namespace Citas_Backend.Controllers
             if (!response.Status)
             {
                 return NotFound(response.Message);
+            }
+
+            if (response.Status)
+            {
+                await _logsService.LogDeleteAsync("", "Doctor eliminado");
             }
             return NoContent();
         }

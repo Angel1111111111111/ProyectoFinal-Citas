@@ -11,10 +11,12 @@ namespace Citas_Backend.Controllers
     public class EspecialidadesController : ControllerBase
     {
         private readonly IEspecialidadService _especialidadService;
+        private readonly ILogsService _logsService;
 
-        public EspecialidadesController(IEspecialidadService especialidadService)
+        public EspecialidadesController(IEspecialidadService especialidadService, ILogsService logsService)
         {
             _especialidadService = especialidadService;
+            _logsService = logsService;
         }
 
         [HttpGet]
@@ -35,6 +37,7 @@ namespace Citas_Backend.Controllers
         public async Task<IActionResult> CreateEspecialidad(EspecialidadDto especialidadDto)
         {
             var response = await _especialidadService.CreateAsync(especialidadDto);
+            await _logsService.LogCreateAsync("", "Especialidad creada");
 
             if (response.Status)
             {

@@ -17,17 +17,19 @@ namespace Citas_Backend.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogsService _logsService;
 
-        public DoctorService(ApplicationDbContext context, IMapper mapper)
+        public DoctorService(ApplicationDbContext context, IMapper mapper, ILogsService logsService)
         {
             _context = context;
             _mapper = mapper;
+            _logsService = logsService;
         }
 
         public async Task<ResponseDto<List<DoctorDto>>> GetDoctorAsyncByEspecialidad(Guid especialidadId)
         {
             var doctores = await _context.Doctor
-                .Include(d => d.Turno) // Incluir la relación con la entidad de turno
+                .Include(d => d.Turno) 
                 .Where(d => d.EspecialidadId == especialidadId)
                 .ToListAsync();
 
@@ -45,7 +47,7 @@ namespace Citas_Backend.Services
         public async Task<ResponseDto<List<DoctorDto>>> GetDoctorAsync()
         {
             var doctores = await _context.Doctor
-                 .Include(d => d.Turno) // Incluir la relación con la entidad de turno
+                 .Include(d => d.Turno) 
                  .ToListAsync();
 
             var doctoresDto = _mapper.Map<List<DoctorDto>>(doctores);
@@ -62,7 +64,7 @@ namespace Citas_Backend.Services
         public async Task<ResponseDto<List<TurnoDto>>> GetTurnosAsync()
         {
             var turnos = await _context.Doctor
-                .Where(d => d.Turno != null) // Filtrar aquellos doctores que tengan un turno asignado
+                .Where(d => d.Turno != null) 
                 .Select(d => d.Turno)
                 .ToListAsync();
 
@@ -107,6 +109,9 @@ namespace Citas_Backend.Services
             _context.Doctor.Add(doctorEntity);
             await _context.SaveChangesAsync();
 
+            // Registrar el log de la creación del doctor
+            //await _logsService.RegistrarLogAsync("Doctor creado correctamente", doctorDto.Id);
+
             return new ResponseDto<bool>
             {
                 Status = true,
@@ -133,6 +138,9 @@ namespace Citas_Backend.Services
 
             await _context.SaveChangesAsync();
 
+            // Registrar el log de la edicion del doctor
+            //await _logsService.RegistrarLogAsync("Doctor editado correctamente", doctorDto.Id);
+
             return new ResponseDto<bool>
             {
                 Status = true,
@@ -157,6 +165,9 @@ namespace Citas_Backend.Services
 
             _context.Doctor.Remove(doctorEntity);
             await _context.SaveChangesAsync();
+
+            // Registrar el log de la eliminacion del doctor
+            //await _logsService.RegistrarLogAsync("Doctor eliminado correctamente", id);
 
             return new ResponseDto<bool>
             {

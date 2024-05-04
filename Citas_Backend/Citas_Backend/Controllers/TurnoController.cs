@@ -4,6 +4,7 @@ using Citas_Backend.Dtos;
 using Citas_Backend.Dtos.Turnos;
 using System.Threading.Tasks;
 using Citas_Backend.Dtos.Citas;
+using Citas_Backend.Services;
 
 namespace Citas_Backend.Controllers
 {
@@ -12,10 +13,12 @@ namespace Citas_Backend.Controllers
     public class TurnoController : ControllerBase
     {
         private readonly ITurnoService _turnoService;
+        private readonly ILogsService _logsService;
 
-        public TurnoController(ITurnoService turnoService)
+        public TurnoController(ITurnoService turnoService, ILogsService logsService)
         {
             _turnoService = turnoService;
+            _logsService = logsService;
         }
 
         [HttpGet]
@@ -30,7 +33,12 @@ namespace Citas_Backend.Controllers
         public async Task<IActionResult> CreateTurno([FromBody] TurnoCreateDto model)
         {
             var response = await _turnoService.CreateTurnoAsync(model);
-            
+
+            if (response.Status)
+            {
+                await _logsService.LogCreateAsync("", "Turno creado");
+            }
+
             return StatusCode(response.StatusCode, response);
 
         }

@@ -6,6 +6,7 @@ using Citas_Backend.Dtos.Especialidades;
 using Citas_Backend.Entities;
 using Citas_Backend.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace Citas_Backend.Services
 {
@@ -13,11 +14,13 @@ namespace Citas_Backend.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogsService _logsService;
 
-        public CitasService(ApplicationDbContext context, IMapper mapper)
+        public CitasService(ApplicationDbContext context, IMapper mapper, ILogsService logsService)
         {
             _context = context;
             _mapper = mapper;
+            _logsService = logsService;
         }
 
         public async Task<ResponseDto<List<CitasDto>>> GetListAsync(string searchTerm = "")
@@ -70,6 +73,9 @@ namespace Citas_Backend.Services
 
             var citaDto = _mapper.Map<CitasDto>(citaEntity);
 
+            // Registra el log de la creación de la cita
+            //await _logsService.RegistrarLogAsync("Cita creada", citaDto.Id);
+
             return new ResponseDto<CitasDto>
             {
                 Status = true,
@@ -100,6 +106,9 @@ namespace Citas_Backend.Services
 
             var citaDto = _mapper.Map<CitasDto>(citaEntity);
 
+            // Registra el log de la edicion de la cita
+           // await _logsService.RegistrarLogAsync("Cita editada", citaDto.Id);
+
             return new ResponseDto<CitasDto>
             {
                 StatusCode = 200,
@@ -125,6 +134,9 @@ namespace Citas_Backend.Services
 
             _context.Citas.Remove(citaEntity);
             await _context.SaveChangesAsync();
+
+            // Registra el log de la eliminacion de la cita
+           // await _logsService.RegistrarLogAsync("Cita eliminada", id);
 
             return new ResponseDto<CitasDto>
             {

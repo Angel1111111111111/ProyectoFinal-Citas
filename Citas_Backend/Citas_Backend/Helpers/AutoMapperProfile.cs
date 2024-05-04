@@ -3,6 +3,7 @@ using Citas_Backend.Dtos.Citas;
 using Citas_Backend.Dtos.Consultas;
 using Citas_Backend.Dtos.Doctores;
 using Citas_Backend.Dtos.Especialidades;
+using Citas_Backend.Dtos.Logs;
 using Citas_Backend.Dtos.pacientes;
 using Citas_Backend.Dtos.Pacientes;
 using Citas_Backend.Dtos.Turnos;
@@ -37,6 +38,10 @@ namespace Citas_Backend.Helpers
             CreateMap<DoctorDto, DoctorEntity>();
             CreateMap<DoctorEntity, DoctorDto>();
             CreateMap<DoctorCreateDto, DoctorEntity>();
+
+            CreateMap<LogDto, LogEntity>();
+            CreateMap<LogEntity, LogDto>();
+            CreateMap<LogCreateDto, LogEntity>();
         }
     }
 }

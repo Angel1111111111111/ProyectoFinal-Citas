@@ -13,6 +13,8 @@ export const Consultation = () => {
   const [motivoConsulta, setMotivoConsulta] = useState("");
   const [comentario, setComentario] = useState("");
 
+  const [citas, setCitas] = useState([]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -27,7 +29,6 @@ export const Consultation = () => {
       motivoConsulta,
       comentario
     };
-
     try {
       const response = await fetch('https://localhost:7089/api/consulta', {
         method: 'POST',
@@ -40,20 +41,30 @@ export const Consultation = () => {
       if (!response.ok) {
         throw new Error('Error al enviar los datos');
       }
-
       alert('Datos enviados correctamente');
+      setCitaId('');
+      setFecha('');
+      setPeso('');
+      setAltura('');
+      setAntecedentes('');
+      setDiagnostico('');
+      setMedicamento('');
+      setMotivoConsulta('');
+      setComentario('');
+
     } catch (error) {
       console.error('Error:', error);
-      alert('Hubo un error al enviar los datos');
+      alert('Hubo un error al enviar los datos'); 
     }
+    
   }
   return (
-    <div>
+    <div >
       <NavigationBar />
-      <div className="flex justify-center items-center h-screen bg-gray-200">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md max-w-4xl w-full">
-        <h2 className="text-2xl font-bold mb-4 text-center">Consulta Médica</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="flex justify-center items-center mt-10 h-screen bg-gray-200">
+        <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-md max-w-4xl w-full">
+          <h2 className="text-2xl font-bold mb-4 text-center">Consulta Médica</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <label htmlFor="citaId" className="block mb-2">Cita ID:</label>
               <input

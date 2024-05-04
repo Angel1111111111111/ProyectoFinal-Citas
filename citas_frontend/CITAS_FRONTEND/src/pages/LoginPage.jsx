@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { InputEmailValidation } from '../validation/input-email';
 import { InputRequiredValidation } from '../validation/input-required';
 import { Error } from '../components';
@@ -20,6 +20,32 @@ export const LoginPage = () => {
     const handleCreateAccount = () => {
         navigate('/register')
     }
+
+    useEffect(() => {
+        const registerLogin = async () => {
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(loginForm),
+                });
+
+                if (!response.ok) {
+                    throw new Error('Error al iniciar sesión')
+                }
+                const result = await response.json();
+                login(result.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
+        if (loginForm.email && loginForm.password) {
+            registerLogin();
+        }
+    }, [loginForm]); // Se ejecutará cada vez que loginForm cambie
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,40 +69,22 @@ export const LoginPage = () => {
         setErrors(newErrors)
 
         if (newErrors.length === 0) {
-            try {
-                const response = await fetch(`${API_URL}/auth/login`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(loginForm),
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error al iniciar sesión')
-                }
-                const result = await response.json();
-                login(result.data);
-
-            } catch (error) {
-                console.log(error);
-            }
+            // La solicitud se manejará en useEffect
         }
     }
 
     return (
-        <div>
-            <NavigationBar />
+        <div className='flex flex-col items-center justify-center min-h-screen bg-gray-200'>
 
-            <div className="h-screen antialiased bg-gray-200 pb-5 text-gray-800">
-                <div className="flex flex-col justify-center sm:w-96 sm:m-auto mx-5 space-y-8">
+            <div className="w-full max-w-md antialiased pb-5 text-gray-800">
+                <div className="flex flex-col justify-center mx-auto space-y-8">
                     <h1 className="font-bold text-center text-4xl text-blue-500">
                         Agenda {''}
                         <span className="text-gray-800">Médica</span>
                     </h1>
 
-                    <form onSubmit={handleSubmit}>
-                        <div className="flex flex-col bg-gray-100 p-10 rounded-lg shadow space-y-6">
+                    <form onSubmit={handleSubmit} className="w-full">
+                        <div className="flex flex-col bg-white p-10 rounded-lg shadow space-y-6">
                             <h2 className="font-bold text-gray-800 text-xl text-center">
                                 Iniciar Sesión
                             </h2>

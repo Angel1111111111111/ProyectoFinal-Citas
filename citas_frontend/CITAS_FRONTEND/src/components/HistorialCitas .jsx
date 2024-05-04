@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { NavigationBar } from './NavigationBar';
+import { TodoFormCita } from './TodoFormCita';
 
 export const HistorialCitas = () => {
   const [citas, setCitas] = useState([]);
-  const [botonTexto, setBotonTexto] = useState('Agendar Cita');
 
   useEffect(() => {
     const obtenerCitasConNombres = async () => {
@@ -81,46 +81,69 @@ export const HistorialCitas = () => {
     }
   };
 
+  const handleEditarCita = async (citaEditada) => {
+    try {
+      const response = await fetch(`https://localhost:7125/api/citas/${citaEditada.id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(citaEditada)
+      });
+      if (!response.ok) {
+        throw new Error('Error al editar la cita.');
+      }
+      const data = await response.json();
+      setCitas(prevCitas =>
+        prevCitas.map(cita =>
+          cita.id === data.data.id ? { ...cita, ...data.data } : cita
+        )
+      );
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className='bg-gray-200 min-h-screen'>
       <NavigationBar />
-    <div className="container mx-auto p-20">
-      <h2 className="text-3xl font-semibold mb-4">Historial de Citas</h2>
+      <div className="container mx-auto p-20">
+        <h2 className="text-3xl font-semibold mb-4">Historial de Citas</h2>
 
-      <ul>
-        {citas.map((cita) => (
-          <li key={cita.id} className="bg-white rounded-lg shadow-md p-6 mb-4">
-            <p className="text-lg font-semibold">Paciente: {cita.nombrePaciente}</p>
-            <p>Fecha: {cita.fecha}</p>
-            <p>Hora: {cita.hora}</p>
-            <p>Doctor: {cita.nombreDoctor}</p>
-            <p>Motivo: {cita.motivo}</p>
-            <button onClick={() => cancelarCita(cita.id)} className="bg-red-500 text-white px-4 py-2 rounded-lg mr-2">Cancelar cita</button>
-            <Link
-              to={{
-                pathname: '/todoForm',
-                state: { cita }
-              }}
-              className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2"
-            >
-              {botonTexto}
-            </Link>
-            <Link
-              to={{
-                pathname: '/consultation',
-                state: {
-                  pacienteId: cita.pacienteId,
-                  doctorId: cita.doctorId
-                }
-              }}
-              className="bg-green-500 text-white px-4 py-2 rounded-lg"
-            >
-              Hacer consulta
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+        <ul>
+          {citas.map((cita) => (
+            <li key={cita.id} className="bg-white rounded-lg shadow-md p-6 mb-4">
+              <p className="text-lg font-semibold">Paciente: {cita.nombrePaciente}</p>
+              <p>Fecha: {cita.fecha}</p>
+              <p>Hora: {cita.hora}</p>
+              <p>Doctor: {cita.nombreDoctor}</p>
+              <p>Motivo: {cita.motivo}</p>
+              <button onClick={() => cancelarCita(cita.id)} className="bg-red-500 text-white px-4 py-2 rounded-lg mr-2">Cancelar cita</button>
+              <Link
+                to={{
+                  pathname: '/todoForm',
+                  state: { handleEditarCita } 
+                }}
+                className="bg-blue-500 text-white px-4 py-2 rounded-lg mr-2"
+              >
+                Editar Cita
+              </Link>
+              <Link
+                to={{
+                  pathname: '/consultation',
+                  state: {
+                    pacienteId: cita.pacienteId,
+                    doctorId: cita.doctorId
+                  }
+                }}
+                className="bg-green-500 text-white px-4 py-2 rounded-lg"
+              >
+                Hacer consulta
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };

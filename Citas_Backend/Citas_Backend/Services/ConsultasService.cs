@@ -14,11 +14,13 @@ namespace Citas_Backend.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly ILogsService _logsService;
 
-        public ConsultaService(ApplicationDbContext context, IMapper mapper)
+        public ConsultaService(ApplicationDbContext context, IMapper mapper, ILogsService logsService)
         {
             _context = context;
             _mapper = mapper;
+            _logsService = logsService;
         }
 
         public async Task<ResponseDto<ConsultaDto>> CreateConsultaAsync(ConsultaCreateDto model)
@@ -29,6 +31,9 @@ namespace Citas_Backend.Services
             await _context.SaveChangesAsync();
 
             var consultaDto = _mapper.Map<ConsultaDto>(consultaEntity);
+
+            // Registra el log de la creación de la consulta
+           // await _logsService.RegistrarLogAsync("Consulta creada", consultaDto.Id);
 
             return new ResponseDto<ConsultaDto>
             {

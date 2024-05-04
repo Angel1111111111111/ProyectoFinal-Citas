@@ -3,16 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\dtos\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\dtos\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\controllers\\citascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\controllers\\citascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\dtos\\security\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\dtos\\security\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\dtos\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\dtos\\responsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\services\\logsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\services\\logsservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\controllers\\logscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\controllers\\logscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|c:\\users\\angel\\onedrive\\documentos\\clases i trimestre\\lenguajes de programacion\\proyectofinal\\citas_backend\\citas_backend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B743026A-59AA-4570-B104-F5528BA7AD16}|Citas_Backend\\Citas_Backend.csproj|solutionrelative:citas_backend\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +42,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Dtos\\ResponseDto.cs",
-              "RelativeDocumentMoniker": "Citas_Backend\\Dtos\\ResponseDto.cs",
-              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Dtos\\ResponseDto.cs",
-              "RelativeToolTip": "Citas_Backend\\Dtos\\ResponseDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Citas_Backend\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Citas_Backend\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAxwBcAAABEAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T17:28:40.79Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-04T04:27:14.408Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "Citas_Backend\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Services\\AuthService.cs",
+              "RelativeToolTip": "Citas_Backend\\Services\\AuthService.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAQwB8AAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T04:07:58.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LogsController.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Controllers\\LogsController.cs",
+              "RelativeDocumentMoniker": "Citas_Backend\\Controllers\\LogsController.cs",
+              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Controllers\\LogsController.cs",
+              "RelativeToolTip": "Citas_Backend\\Controllers\\LogsController.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAuwF4AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T02:40:57.593Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LogsService.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Services\\LogsService.cs",
+              "RelativeDocumentMoniker": "Citas_Backend\\Services\\LogsService.cs",
+              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Services\\LogsService.cs",
+              "RelativeToolTip": "Citas_Backend\\Services\\LogsService.cs",
+              "ViewState": "AQIAACQAAAAAAAAAAAAqwE4AAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-04T02:40:14.3Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LoginResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Dtos\\LoginResponseDto.cs",
-              "RelativeDocumentMoniker": "Citas_Backend\\Dtos\\LoginResponseDto.cs",
-              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Dtos\\LoginResponseDto.cs",
-              "RelativeToolTip": "Citas_Backend\\Dtos\\LoginResponseDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Title": "CitasController.cs",
+              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Controllers\\CitasController.cs",
+              "RelativeDocumentMoniker": "Citas_Backend\\Controllers\\CitasController.cs",
+              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Controllers\\CitasController.cs",
+              "RelativeToolTip": "Citas_Backend\\Controllers\\CitasController.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAADAAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T17:28:40.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Dtos\\Security\\LoginDto.cs",
-              "RelativeDocumentMoniker": "Citas_Backend\\Dtos\\Security\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\angel\\OneDrive\\Documentos\\Clases I Trimestre\\Lenguajes de programacion\\ProyectoFinal\\Citas_Backend\\Citas_Backend\\Dtos\\Security\\LoginDto.cs",
-              "RelativeToolTip": "Citas_Backend\\Dtos\\Security\\LoginDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T17:28:31.686Z",
+              "WhenOpened": "2024-05-04T02:39:29.777Z",
               "EditorCaption": ""
             }
           ]

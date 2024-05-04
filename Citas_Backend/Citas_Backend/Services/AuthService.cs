@@ -15,36 +15,32 @@ namespace Citas_Backend.Services
         private readonly SignInManager<UserEntity> _signInManager;
         private readonly UserManager<UserEntity> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly ILogsService _logsService;
 
         public AuthService(
             SignInManager<UserEntity> signInManager,
             UserManager<UserEntity> userManager,
-            IConfiguration configuration
-            )
+            IConfiguration configuration,
+            ILogsService logsService)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _configuration = configuration;
+            _logsService = logsService;
         }
 
-        public async Task<ResponseDto<LoginResponseDto>> LoginAsync(LoginDto dto) //lo que envia el cliente, usuario y clave
-        { //creacion del login
-
-            Console.WriteLine(dto.Email);
-            Console.WriteLine(dto.Password);
-
+        public async Task<ResponseDto<LoginResponseDto>> LoginAsync(LoginDto dto)
+        {
             var result = await _signInManager.PasswordSignInAsync(
                 dto.Email,
                 dto.Password,
                 isPersistent: false,
-                lockoutOnFailure: false //para que no se bloquee
+                lockoutOnFailure: false
             );
 
             if (result.Succeeded)
             {
-                // si todo sale bien, se trabaja las respuestas con el token
-                var userEntity = await _userManager
-                    .FindByEmailAsync(dto.Email);
+                var userEntity = await _userManager.FindByEmailAsync(dto.Email);
 
                 var authClaims = new List<Claim>()
                 {
@@ -54,19 +50,21 @@ namespace Citas_Backend.Services
                 };
 
                 var userRoles = await _userManager.GetRolesAsync(userEntity);
-
                 foreach (var role in userRoles)
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, role));
                 }
-                // generar el tokens
+
                 var jwtToken = GetToken(authClaims);
+
+                // Registrar evento de inicio de sesión en el log
+               // await _logsService.RegistrarLogAsync("Inicio de sesión exitoso", userEntity.Id);
 
                 return new ResponseDto<LoginResponseDto>
                 {
                     StatusCode = 200,
                     Status = true,
-                    Message = "Inicio de secion realizado satisfactoriamente",
+                    Message = "Inicio de sesión realizado satisfactoriamente",
                     Data = new LoginResponseDto
                     {
                         Email = userEntity.Email,
@@ -76,30 +74,26 @@ namespace Citas_Backend.Services
                 };
             }
 
-            // si todo sale mal, se de vuelve el error
-
             return new ResponseDto<LoginResponseDto>
             {
                 StatusCode = 400,
                 Status = false,
-                Message = "Fallo el inicio de sesion"
+                Message = "Fallo el inicio de sesión"
             };
         }
 
         private JwtSecurityToken GetToken(List<Claim> authClaims)
         {
-            // genera el token
             var authSigninKey = new SymmetricSecurityKey(
                 Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
             var token = new JwtSecurityToken(
                 issuer: _configuration["JWT: ValidIssuer"],
                 audience: _configuration["JWT: ValidAudience"],
-                expires: DateTime.Now.AddHours(1), //.Now fecha del momento, AddHours(1) de un minuto
+                expires: DateTime.Now.AddHours(1),
                 claims: authClaims,
-                //algoritmo para cifrar el token
                 signingCredentials: new SigningCredentials(authSigninKey, SecurityAlgorithms.HmacSha256)
-                );
+            );
             return token;
         }
     }

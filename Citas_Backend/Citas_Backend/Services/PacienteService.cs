@@ -89,7 +89,7 @@ namespace Citas_Backend.Services
         public async Task<ResponseDto<PacienteDto>> RegistrarPacienteAsync(PacienteCreateDto pacienteDto)
         {
             var pacienteEntity = _mapper.Map<PacienteEntity>(pacienteDto);
-            pacienteEntity.Id = Guid.NewGuid(); // Generar nuevo ID
+            pacienteEntity.Id = Guid.NewGuid(); 
 
             _context.Pacientes.Add(pacienteEntity);
             await _context.SaveChangesAsync();
